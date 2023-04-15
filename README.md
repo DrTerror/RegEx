@@ -40,32 +40,57 @@ Now go to the Menu "Search -> Bookmark -> Remove Bookmarked lines"
 ## MOD- und FUNC-Makros ersetzen:
 
 Suchstring:
+```
 	<ALTER_NAME>\s*\(\s*(\w+)\s*\)
+```
 Ersetzenstring:
+```
 	<NEUER_NAME>_$1
+```
 Bsp.:
+```
 	(PARA)Func\s*\(\s*(\w+)\s*\)
 ->  fn$1_$2
+```
 
 Weitere Bespiele:
+```
 	(PARA_)(\w+\()
 ->  fn$1$2
+```
 
+```
 	func\s*\(\s*(\w+)\s*\)
 ->  fn<MOD_TOKEN>_$1
+```
 
+```
 	MOD\s*\(\s*(\w+)\s*\)
 ->  <MOD_TOKEN>_$1
+```
 
-
--------------------------------------------------------------------------------
 
 ## Umlaute :
-^//^s*[äöüß]
+```
+//^s*[äöüß]
+```
+		
+```
+UTF8  <-->  Cp1252
+ä           Ã¤
+Ä           Ã„
+ö           Ã¶
+Ö           
+ü           Ã¼
+Ü           Ãœ
+ß           ÃŸ
+```
 
 
 ### Umlaute in Kommentaren:
+```
 \/\/.*[ÄäÖöÜüß]
+```
 
 ---
 
@@ -106,7 +131,9 @@ function umlaut(str) {
 ### C++-Line-Comments -> C-Block-Comments
 
 Text:
+```
     test"123"(456)#[78]9+0!_abc/{}@
+```
 
 ```    
 s#//\(.*\)#/*\1 */#
