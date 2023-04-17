@@ -8,8 +8,10 @@
     Ersetzen durch: <NIX>
 
 ```    
-.+(TEXT).+[\r\n|\n\r|\n]
-.+(TEXT|TEXT2|TEXT3).*[\r\n|\n\r|\n]
+.*((TEXT)|(TEXT2)|(TEXT3)).*[(\r\n)|(\n\r)|(\n)]
+
+.*(TEXT).*[\r\n|\n\r|\n]
+.*(TEXT|TEXT2|TEXT3).*[\r\n|\n\r|\n]
 ```    
 
 Danach müssen noch Leerzeilen gelöscht werden.
