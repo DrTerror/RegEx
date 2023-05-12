@@ -1,30 +1,26 @@
 # Reg-Ex-Hax
+---
 
 ## Zeile mit String finden (z. B. zum Löschen)
 
 **!!! Wichtig !!!** \
     RegEx einschalten
-    finden von ```\r``` und ```\n``` abschalten!
+    finden von `\r` und `\n` abschalten!
     Ersetzen durch: <NIX>
 
-```
-.*((TEXT)|(TEXT2)|(TEXT3)).*[(\r\n)|(\n\r)|(\n)]
-```
-```
-.*(TEXT).*[\r\n|\n\r|\n]
-.*(TEXT|TEXT2|TEXT3).*[\r\n|\n\r|\n]
-```
+    .*((TEXT)|(TEXT2)|(TEXT3)).*[(\r\n)|(\n\r)|(\n)] 
+
+    .*(TEXT).*[\r\n|\n\r|\n]
+    .*(TEXT|TEXT2|TEXT3).*[\r\n|\n\r|\n]
 
 Danach müssen noch Leerzeilen gelöscht werden.
 
 
 ### Alte Versuche
-```
-^.+?\TEXT.+$\r\n
-^.*#TEXT.*$\r\n
-^(\s)*(TEXT).*(\r\n|\n\r|\r|\n)?
-^.*(TEXT).*(\r\n|\n\r|\r|\n)?
-```
+    ^.+?\TEXT.+$\r\n
+    ^.*#TEXT.*$\r\n
+    ^(\s)*(TEXT).*(\r\n|\n\r|\r|\n)?
+    ^.*(TEXT).*(\r\n|\n\r|\r|\n)?
 
 ### This is also possible with Notepad++
 
@@ -33,26 +29,23 @@ Goto the search menu Ctrl+F and there to the *"Mark"* tab. Check *"Bookmark line
 Now go to the Menu *"Search -> Bookmark -> Remove Bookmarked lines"*.
 
 #### Remove duplicate lines
-```
-^(.*?)$\s+?^(?=.*^\1$)
-```
+    ^(.*?)$\s+?^(?=.*^\1$)
 
 ### Komplette Zeile löschen
-```
-([\S| ]*(__TEXT__)[\S| ]*)\r\n
-([\S| ]*(__TEXT__)[\S| ]*)\n
-```
+    ([\S| ]*(__TEXT__)[\S| ]*)\r\n
+    ([\S| ]*(__TEXT__)[\S| ]*)\n
 
+---
 ## MOD- und FUNC-Makros ersetzen:
 
 **Suchstring:**
-```
-<ALTER_NAME>\s*\(\s*(\w+)\s*\)
-```
+
+    <ALTER_NAME>\s*\(\s*(\w+)\s*\)
+
 **Ersetzenstring:**
-```
-<NEUER_NAME>_$1
-```
+
+    <NEUER_NAME>_$1
+
 **Bsp.:**
 ```
     (PARA)Func\s*\(\s*(\w+)\s*\)
@@ -77,9 +70,7 @@ Now go to the Menu *"Search -> Bookmark -> Remove Bookmarked lines"*.
 
 
 ## Umlaute
-```
-//^s*[äöüß]
-```
+    //^s*[äöüß]
 
 ```
 UTF8  <-->  Cp1252
@@ -94,12 +85,9 @@ UTF8  <-->  Cp1252
 
 
 ### Umlaute in Kommentaren
-```
-\/\/.*[ÄäÖöÜüß]
-```
+    \/\/.*[ÄäÖöÜüß]
 
 ---
-
 ## JAVA
 
 ```java
@@ -131,7 +119,7 @@ function umlaut(str) {
 }
 ```
 
-
+---
 ## Versuch C++-Kommentare in Ansi-C-Kommentare zu konvertieren
 
 ### C++-Line-Comments -> C-Block-Comments
@@ -148,8 +136,8 @@ s!//\(.*\)!/*\1*/!g
 ```
 
 **Thread by stackoverflow:** \
-I think you should first replace the ```/*``` and ```*/``` after ```//```, and then
-replace ```//```. Something like:
+I think you should first replace the `/*` and `*/` after `//`, and then
+replace `//`. Something like:
 
 ```
 s!//.*\zs/\*!{!
@@ -157,11 +145,11 @@ s!//.*\zs\*/!}!
 s!//\(.*\)!/*\1 */!
 ```
 
-why not ```/\*(.(?!\*/))*\*/ ?``` first an ```/*``` then any character not followed by ```*/``` then ```*/```
+why not `/\*(.(?!\*/))*\*/ ?` first an `/*` then any character not followed by `*/` then `*/`
 
-Wouldn't it be simpler to use ```/\*.*?\*/```
+Wouldn't it be simpler to use `/\*.*?\*/`
 
-I like to add raw-string ```r"/[*]([^*]|([*][^/]))*[*]/"``` as it worked in python !
+I like to add raw-string `r"/[*]([^*]|([*][^/]))*[*]/"` as it worked in python !
 
 ```
 ((\s*)(\/\/)(\s*))+(.*)[\n|\n\r|\r\n\r]
@@ -175,9 +163,9 @@ I like to add raw-string ```r"/[*]([^*]|([*][^/]))*[*]/"``` as it worked in pyth
 
 ### Test-Strings
 
-**Für C-Kommentare finden**
+**Für C-Kommentare finden (todo)**
 
-```C
+```c
 // test"123"(456)#[78]9+0!_abc/{}@ test"123"(456)#[78]9+0!_abc/{}@
 //test"123"(456)#[78]9+0!_abc/{}@ test"123"(456)#[78]9+0!_abc/{}@
    // test"123"(456)#[78]9+0!_abc/{}@ test"123"(456)#[78]9+0!_abc/{}@
@@ -195,7 +183,7 @@ test"123"(456)#[78]9+0!_abc/{}@ // test"123"(456)#[78]9+0!_abc/{}@
 */
 ```
 
-
+<!--
 ### ???
 
 ```
@@ -209,3 +197,4 @@ test"123"(456)#[78]9+0!_abc/{}@ // test"123"(456)#[78]9+0!_abc/{}@
 ```
 (?:(?!([ \t]*(\.\w{2,}+[ \t]+(\w*)[ \t]+(\w*)[ \t]+(.*)))).)*
 ```
+-->
